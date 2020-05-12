@@ -212,6 +212,7 @@ func setTiDBReplicaRead(job string, db *sql.DB, mode string) {
 
 // RandomlyChangeReplicaRead changes `tidb_replica_read` randomly in a session.
 func RandomlyChangeReplicaRead(job, replicaRead string, db *sql.DB) {
+	rand.Seed(time.Now().UnixNano())
 	// Switch mode with probability 0.5.
 	if replicaRead != "leader" && rand.Float32() < 0.5 {
 		if getTiDBReplicaRead(job, db) == "leader" {

@@ -21,11 +21,11 @@ spec:
           - name: nemesis
             default: ""
           - name: tiflash_image
-            default: ""
+            default: "nightly"
           - name: tiflash_replicas
             default: 2
           - name: run_time
-            default: "48h"
+            default: "24h"
           - name: loki-addr
             default: http://gateway.loki.svc
           - name: loki-username
