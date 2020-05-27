@@ -6,18 +6,18 @@ spec:
   arguments:
     parameters:
       - name: ns
-        value: tipocket-follower-read
+        value: tipocket-follower-read-open
       - name: purge
         value: "true"
       - name: repository
         value: pingcap
-      - name: image-version
+      - name: image_version
         value: nightly
-      - name: storage-class
+      - name: storage_class
         value: local-storage
       - name: nemesis
         value: ""
-      - name: run-time
+      - name: run_time
         value: "6h"
       - name: loki-username
         value: loki
@@ -25,6 +25,8 @@ spec:
         value: admin
       - name: loki-addr
         value: "http://gateway.loki.svc"
+      - name: seq-loop
+        value: "10000"
   templates:
     - name: call-tipocket-follower-read
       steps:
@@ -40,17 +42,19 @@ spec:
                   value: "{{workflow.parameters.purge}}"
                 - name: repository
                   value: "{{workflow.parameters.repository}}"
-                - name: image-version
-                  value: "{{workflow.parameters.image-version}}"
-                - name: storage-class
-                  value: "{{workflow.parameters.storage-class}}"
+                - name: image_version
+                  value: "{{workflow.parameters.image_version}}"
+                - name: storage_class
+                  value: "{{workflow.parameters.storage_class}}"
                 - name: nemesis
                   value: "{{workflow.parameters.nemesis}}"
-                - name: run-time
-                  value: "{{workflow.parameters.run-time}}"
+                - name: run_time
+                  value: "{{workflow.parameters.run_time}}"
                 - name: loki-addr
                   value: "{{workflow.parameters.loki-addr}}"
                 - name: loki-username
                   value: "{{workflow.parameters.loki-username}}"
                 - name: loki-password
                   value: "{{workflow.parameters.loki-password}}"
+                - name: seq-loop
+                  value: "{{workflow.parameters.seq-loop}}"
